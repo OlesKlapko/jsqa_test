@@ -349,11 +349,16 @@ const glo = 'glo site';
 	// Визнач двома способами (як функціональний вираз та як оголошення функції)
 	// функцію cube, що приймає один числовий параметр і повертає куб від цього числа.
 	// TODO: пишіть свій код тут:
-
+	function cube (a){
+		return a*a*a;
+	}
+console.log(cube(4));
 	console.log('\nPlease implement this task');
 
-
-
+var cube = function(x){
+	return x*x*x;
+}
+console.log(cube(5));
 
 
 	console.log('\nTask 06.02');
@@ -370,12 +375,12 @@ const glo = 'glo site';
 	var function1 = function () {
 		var global1 = 'LOCAL1';
 		global2 = 'LOCAL2';
-		console.log('log from function scope: \n', global1, '\n', global2);
+		console.log('log from function scope: \n', global1, '\n', global2); // global1-LOCAL1,global2- LOCAL2
 	};
 
 	function1();
 
-	console.log('log from global scope: \n', global1, '\n', global2);
+	console.log('log from global scope: \n', global1, '\n', global2); // global1- global1 , global2 - LOCAL2
 
 
 
@@ -393,6 +398,17 @@ const glo = 'glo site';
 	// з консолі показував LOCAL1 замість global1
 
 	// TODO: код тут:
+	
+
+	var function1 = function () {
+	    global1 = 'LOCAL1';
+		global2 = 'LOCAL2';
+		console.log('log from function scope: \n', global1, '\n', global2); // global1-LOCAL1,global2- LOCAL2
+	};
+
+	function1();
+
+	console.log('log from global scope: \n', global1, '\n', global2); // global1- global1 , global2 - LOCAL2
 
 	console.log('\nPlease implement this task');
 
@@ -412,7 +428,18 @@ const glo = 'glo site';
 	// з консолі показував global2 замість LOCAL2
 
 	// TODO: код тут:
-
+	global1 = 'global1';
+		global2 = 'global2';
+	
+		var function1 = function () {
+			var global1 = 'LOCAL1'; //создана локальная переменная
+			var global2 = 'LOCAL2'; //создана локальная переменная
+			console.log('log from function scope: \n', global1, '\n', global2); // output: LOCAL1, LOCAL2
+		};
+	
+		function1();
+	
+		console.log('log from global scope: \n', global1, '\n', global2);// output: global1, global2
 	console.log('\nPlease implement this task');
 
 
@@ -432,6 +459,21 @@ const glo = 'glo site';
 	// Напиши код, який викликає blackBox, у якості параметра передаючи 'secret'
 
 	// TODO: пишіть свій код тут:
+
+	(function(){
+console.log('hello');
+
+function blackBox(hidden){
+return function insider(){
+return hidden;
+};
+
+}
+var blackBoxResult = blackBox('secret');
+console.log(blackBoxResult);
+var insiderResult = blackBoxResult();
+console.log(insiderResult);
+	})();
 
 	console.log('\nPlease implement this task');
 
