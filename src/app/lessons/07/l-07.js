@@ -276,6 +276,8 @@
 	}
 
 	// TODO: дай відповідь тут:
+	// 1 не є замиканням,нічого не вертає
+	//2 може бути замиканням у випадку якшо func1InternalFunc дасть доступ до даних func1
 
 	console.log('\nTask 07.02');
 	console.log('\n\t Please implement this task');
@@ -285,11 +287,18 @@
 	// TODO: пиши код тут:
 
 	function sillyClosure() {
-		return this;
+		let counter = 0;
+		function count() {
+			counter ++;
+			return counter;
+		};
+		return count;
 	}
 
-	console.log(sillyClosure())
-
+	console.log(sillyClosure());
+	var coun = sillyClosure(5);
+   var srartCount = coun();
+   console.log('Firs incremented number:', srartCount);
 	console.log('\nTask 07.03');
 	console.log('\n\t Please implement this task');
 
@@ -301,7 +310,7 @@
 		return false;
 	}
 
-	// TODO: пиши відповідь словами тут:
+	// TODO: пиши відповідь словами тут: 
 	// WRONG 1:
 	function iAmClosureTwo() {
 		var iAmEnclosed = 'secret';
@@ -364,4 +373,17 @@
 	var disclosedInternalFour = accessEnclosed();
 
 })();
+
+function closureT4(){
+var student = {
+	Name: 'Petro',
+	age : 30
+};
+function inside(){
+	return student;
+};
+return inside;
+}
+console.log(closureT4());
+console.log(closureT4()());
 // Завершення глобальної анонімної функції
